@@ -2,7 +2,7 @@
 <?php 
 if( !isset($_GET['from']) || !isset($_GET['to']) || !isset($_GET['amount']))
 {
-	echo "ERROR 001 : DATA_INCOMPLETE_ERROR. The required parameters are missing. Please refer documentation for more details.";
+	echo "ERROR 001 : DATA_INCOMPLETE_ERROR. The required parameters are missing. Please refer documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 }
 else 
 {
@@ -12,19 +12,19 @@ else
 		$currency_array = array("AED","AFN","ALL","AMD","ANG","AOA","ARS","AUD","AWG","AZN","BAM","BBD","BDT","BGN","BHD","BIF","BMD","BND","BOB","BRL","BSD","BTC","BTN","BWP","BYN","BYR","BZD","CAD","CDF","CHF","CLF","CLP","CNH","CNY","COP","CRC","CUP","CVE","CZK","DEM","DJF","DKK","DOP","DZD","EGP","ERN","ETB","EUR","FIM","FJD","FKP","FRF","GBP","GEL","GHS","GIP","GMD","GNF","GTQ","GYD","HKD","HNL","HRK","HTG","HUF","IDR","IEP","ILS","INR","IQD","IRR","ISK","ITL","JMD","JOD","JPY","KES","KGS","KHR","KMF","KPW","KRW","KWD","KYD","KZT","LAK","LBP","LKR","LRD","LSL","LTL","LVL","LYD","MAD","MDL","MGA","MKD","MMK","MNT","MOP","MRO","MUR","MVR","MWK","MXN","MYR","MZN","NAD","NGN","NIO","NOK","NPR","NZD","OMR","PAB","PEN","PGK","PHP","PKG","PKR","PLN","PYG","QAR","RON","RSD","RUB","RWF","SAR","SBD","SCR","SDG","SEK","SGD","SHP","SKK","SLL","SOS","SRD","STD","SVC","SYP","SZL","THB","TJS","TMT","TND","TOP","TRY","TTD","TWD","TZS","UAH","UGX","USD","UYU","UZS","VEF","VND","VUV","WST","XAF","XCD","XDR","XOF","XPF","YER","ZAR","ZMK","ZMW","ZWL");
 		if($from == $to)
 		{
-			echo "ERROR 002 : INVALID_CONVERSION_ERROR. Please check the conversion types. Conversion types cannot be same. Please visit <>";
+			echo "ERROR 002 : INVALID_CONVERSION_ERROR. Please check the conversion types. Conversion types cannot be same. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if( !in_array($from,$currency_array) )
 		{
-			echo "ERROR 003 : INVALID_FROM_VALUE_ERROR. Please check the from value.Please refer documentation and currency codes for more details.";
+			echo "ERROR 003 : INVALID_FROM_VALUE_ERROR. Please check the from value.Please refer documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if( !in_array($to,$currency_array) )
 		{
-			echo "ERROR 004 : INVALID_TO_VALUE_ERROR. Please check the to value. Please refer  documentation and currency codes for more details.";
+			echo "ERROR 004 : INVALID_TO_VALUE_ERROR. Please check the to value. Please refer  documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if(is_nan($amount))
 		{
-			echo "ERROR 005 : INVALID_AMOUNT_ERROR. Please check the amount. Please refer  documentation for more details.";
+			echo "ERROR 005 : INVALID_AMOUNT_ERROR. Please check the amount. Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else
 		{
