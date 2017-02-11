@@ -31,30 +31,37 @@ else
 		{
 			header('Content-type: text/plain');
 			$resp = file_get_contents('https://www.google.com/finance/converter?a='.$amount.'&from='.$from.'&to='.$to.'');
-			strripos($resp,'bld');
-			$start_at = strripos($resp,'bld')+4;
-			$till = (strripos($resp,'submit')-24)-$start_at;
-			$value = substr($resp,$start_at,$till);
-			$index = array_search($from,$currency_array);
 			
-			$from_full_currency = $currency_full_forms[$index];
-			$index = array_search($to,$currency_array);
-			$to_full_currency = $currency_full_forms[$index];
-			if(strtoupper($_GET['format']) == "XML")
-			{	
-				$output = '<?xml version="1.0"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response></item></data>';
-			}
-			else if(strtoupper($_GET['format']) == "DIRECT")
-			{	
-				$output =	$value;
-			}
-			else
+			if(substr($resp,strripos($resp,'currency_converter_result')+27,17) == "Could not convert")
 			{
-				$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'"}]}';
-			}
+				echo "ERROR 006 : COULD_NOT_CONVERT. Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 				
-			echo $output;
-			
+			}
+			else 			
+			{
+				$start_at = strripos($resp,'bld')+4;
+				$till = (strripos($resp,'submit')-24)-$start_at;
+				$value = substr($resp,$start_at,$till);
+				$index = array_search($from,$currency_array);
+				$from_full_currency = $currency_full_forms[$index];
+				$index = array_search($to,$currency_array);
+				$to_full_currency = $currency_full_forms[$index];
+				
+				if(strtoupper($_GET['format']) == "XML")
+				{	
+					$output = '<?xml version="1.0"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response></item></data>';
+				}
+				else if(strtoupper($_GET['format']) == "DIRECT")
+				{	
+					$output =	$value;
+				}
+				else
+				{
+					$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'"}]}';
+				}
+					
+				echo $output;
+			}	
 			
 		}
 }
