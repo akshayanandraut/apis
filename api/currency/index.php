@@ -16,7 +16,7 @@ else
 		}
 		else if( !in_array($from,$currency_array) )
 		{
-			echo "ERROR 003 : INVALID_FROM_VALUE_ERROR. Please check the from value.Please refer documentation and currency codes for more details. Please visit <a href='https://akshayanandraut.github.io/api-currency-converter'>https://akshayanandraut.github.io/api-currency-converter"</a>;
+			echo "ERROR 003 : INVALID_FROM_VALUE_ERROR. Please check the from value.Please refer documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if( !in_array($to,$currency_array) )
 		{
