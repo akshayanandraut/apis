@@ -1,7 +1,13 @@
 <?php 
+$error = "NO_ERROR";
+$error_code = "000";
+$error_desc = "NO ERROR.";
 if( !isset($_GET['from']) || !isset($_GET['to']) || !isset($_GET['amount']))
 {
-	echo "ERROR 001 : DATA_INCOMPLETE_ERROR. The required parameters are missing. Please refer documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+	$error_code = "001";
+	$error = "DATA_INCOMPLETE_ERROR";
+	$error_desc =  "The required parameters are missing. Please refer documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+	
 }
 else 
 {
@@ -13,19 +19,27 @@ else
 		
 		if($from == $to)
 		{
-			echo "ERROR 002 : INVALID_CONVERSION_ERROR. Please check the conversion types. Conversion types cannot be same. Please visit https://akshayanandraut.github.io/api-currency-converter";
+			$error_code = "002";
+			$error = "INVALID_CONVERSION_ERROR";
+			$error_desc = "Please check the conversion types. Conversion types cannot be same. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if( !in_array($from,$currency_array) )
 		{
-			echo "ERROR 003 : INVALID_FROM_VALUE_ERROR. Please check the from value.Please refer documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+			$error_code = "003";
+			$error = "INVALID_FROM_VALUE_ERROR";
+			$error_desc = "Please check the from value.Please refer documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if( !in_array($to,$currency_array) )
 		{
-			echo "ERROR 004 : INVALID_TO_VALUE_ERROR. Please check the to value. Please refer  documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+			$error_code = "004";
+			$error = "INVALID_TO_VALUE_ERROR";
+			$error_desc = "Please check the to value. Please refer  documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else if(is_nan($amount))
 		{
-			echo "ERROR 005 : INVALID_AMOUNT_ERROR. Please check the amount. Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+			$error_code = "005";
+			$error = "INVALID_AMOUNT_ERROR";
+			$error_desc = "Please check the amount. Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
 		else
 		{
@@ -34,7 +48,9 @@ else
 			
 			if(substr($resp,strripos($resp,'currency_converter_result')+27,17) == "Could not convert")
 			{
-				echo "ERROR 006 : COULD_NOT_CONVERT. Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
+				$error_code = "006";
+				$error = "COULD_NOT_CONVERT";
+				$error_desc = "Please refer  documentation for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 				
 			}
 			else 			
@@ -49,15 +65,23 @@ else
 				
 				if(strtoupper($_GET['format']) == "XML")
 				{	
-					$output = '<?xml version="1.0"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response></item></data>';
+					$output = '<?xml version="1.0"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response><error_no>'.$error_code.'</error_no><error>'.$error.'</error><error_desc>'.$error_desc.'</error_desc></item></data>';
 				}
 				else if(strtoupper($_GET['format']) == "DIRECT")
 				{	
-					$output =	$value;
+					if($error_code != "000")
+					{
+						$output = 'ERROR '.$error_code.'. '.$error.'. '.$error_desc;
+					}
+					else{
+						$output =	$value;
+					}
+					
+					
 				}
 				else
 				{
-					$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'"}]}';
+					$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'","error_no":"'.$error_code.'","error":"'.$error.'","error_desc":"'.$error_desc.'"}]}';
 				}
 					
 				echo $output;
