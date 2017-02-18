@@ -2,6 +2,12 @@
 $error = "NO_ERROR";
 $error_code = "000";
 $error_desc = "NO ERROR.";
+$from = "";
+$to = "" ;
+$amount = 0;
+$from_full_currency = "";
+$to_full_currency = "";
+$value = "";
 if( !isset($_GET['from']) || !isset($_GET['to']) || !isset($_GET['amount']))
 {
 	$error_code = "001";
@@ -35,7 +41,7 @@ else
 			$error = "INVALID_TO_VALUE_ERROR";
 			$error_desc = "Please check the to value. Please refer  documentation and currency codes for more details. Please visit https://akshayanandraut.github.io/api-currency-converter";
 		}
-		else if(is_nan($amount))
+		else if(!is_numeric($amount))
 		{
 			$error_code = "005";
 			$error = "INVALID_AMOUNT_ERROR";
@@ -63,12 +69,20 @@ else
 				$index = array_search($to,$currency_array);
 				$to_full_currency = $currency_full_forms[$index];
 				
-				if(strtoupper($_GET['format']) == "XML")
-				{	
-					$output = '<?xml version="1.0"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response><error_no>'.$error_code.'</error_no><error>'.$error.'</error><error_desc>'.$error_desc.'</error_desc></item></data>';
+				
+			}	
+			
+		}
+}
+				
+				if(isset($_GET['format']) && strtoupper($_GET['format']) == "XML")
+				{	header('Content-type: text/plain');
+					$output = '<?xml version="1.0" encoding="UTF-8"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response><error_no>'.$error_code.'</error_no><error>'.$error.'</error><error_desc>'.$error_desc.'</error_desc></item></data>';
+									echo $output;
+
 				}
-				else if(strtoupper($_GET['format']) == "DIRECT")
-				{	
+				else if(isset($_GET['format']) && strtoupper($_GET['format']) == "DIRECT")
+				{	header('Content-type: text/plain');
 					if($error_code != "000")
 					{
 						$output = 'ERROR '.$error_code.'. '.$error.'. '.$error_desc;
@@ -76,17 +90,18 @@ else
 					else{
 						$output =	$value;
 					}
+									echo $output;
+
 					
 					
 				}
 				else
 				{
+					header('Content-type: text/json');
 					$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'","error_no":"'.$error_code.'","error":"'.$error.'","error_desc":"'.$error_desc.'"}]}';
+									echo $output;
+
 				}
 					
-				echo $output;
-			}	
-			
-		}
-}
+				
 ?>
