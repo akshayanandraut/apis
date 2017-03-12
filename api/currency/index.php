@@ -1,5 +1,7 @@
 <?php 
- header('Access-Control-Allow-Origin: *');  
+header('Access-Control-Allow-Origin: *');  
+header('Access-Control-Allow-Headers: *');  
+
 $error = "NO_ERROR";
 $error_code = "000";
 $error_desc = "NO ERROR.";
