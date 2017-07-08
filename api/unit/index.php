@@ -15,10 +15,10 @@ if(in_array($type,$typex))
 						$unitFull=array('Meters','Kilometers','Centimeters','Millimeters','Micrometers','Nanometers','Miles','Yards','Foot','Inches', 'Light Year');
 						$baseToFinal = array(1,0.001,100,1000,1000000,1000000000,0.0006213689,1.0936132983,3.280839895,39.37007874,-13.1267524392389);
 						$unitToBase = array(1,1000,0.01,0.001,0.000001,-6.28171817154095,1609.35,0.9144,0.3048,0.0254,9460660000000000);
-						echo '**_Unit code_** | **_Unit_**\n\n';
+						echo '**_Unit code_** | **_Unit_** <br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
@@ -30,7 +30,7 @@ echo '<br><br>';
 						echo '**_Unit code_** | **_Unit_**<br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
@@ -42,7 +42,7 @@ echo '<br><br>';
 						echo '**_Unit code_** | **_Unit_**<br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
@@ -54,7 +54,7 @@ echo '<br><br>';
 						echo '**_Unit code_** | **_Unit_**<br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
@@ -67,7 +67,7 @@ echo '<br><br>';
 						echo '**_Unit code_** | **_Unit_**<br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
@@ -79,7 +79,7 @@ echo '<br><br>';
 						echo '**_Unit code_** | **_Unit_**<br><br>';
 						for($i=0; $i<sizeof($units); $i++)
 {
-	echo '**'.$units[$i].'** | '.$unitFull[i].'<br>';
+	echo '**'.$units[$i].'** | '.$unitFull[$i].'<br>';
 }
 echo '<br><br>';
 						break;
