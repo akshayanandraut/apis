@@ -71,16 +71,15 @@ if(in_array($type,$typex))
 else{
 	$result= "ERROR004 : Oops, there seems to a bit of a problem in the code...";
 }
-echo '{
-"data":[{
-		"unitType" : '.$typey[$key].' ,
-		"from" : '.$from.' ,
-		"fromUnit" : '.$unitFull[$indexFrom].' ,
-		"to" : '.$to.' ,
-		"toUnit" : '.$unitFull[$indexTo].' ,
-		"value" : '.$val.' ,
+echo '
+"data":{
+		"unitType" : "'.$typey[$key].'",
+		"from" : "'.$from.'",
+		"fromUnit" : "'.$unitFull[$indexFrom].'",
+		"to" : "'.$to.'",
+		"toUnit" : "'.$unitFull[$indexTo].'",
+		"value" : '.$val.',
 		"result" : '.$result.'
-	}]
 }';
 
 
