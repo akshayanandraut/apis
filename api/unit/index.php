@@ -20,7 +20,7 @@ if(in_array($type,$typex))
 		case "temp": 
 						$units = array('celsius','kelvin','fahrenheit');
 						$baseToFinal = array(1,274.15,33.8);
-						$unitFull=array('celsius','Kelvin','Fahrenheit');
+						$unitFull=array('Celsius','Kelvin','Fahrenheit');
 						$unitToBase = array(1,-272.15,-17.222222222);
 						
 						break;
