@@ -106,7 +106,7 @@ echo '{
 		"unitType" : '.$typey[$key].' ,
 		"from" : '.$from.' ,
 		"fromUnit" : '.$unitFull[$indexFrom].' ,
-		"to" : '.$to' ,
+		"to" : '.$to.' ,
 		"toUnit" : '.$unitFull[$indexTo].' ,
 		"value" : '.$val.' ,
 		"result" : '.$result.'
