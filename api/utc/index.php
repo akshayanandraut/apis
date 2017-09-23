@@ -1,7 +1,4 @@
-<?php// include_once("analyticstracking.php") ?>
 <?php
-
-
 header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Headers: *');  
 header('Access-Control-Allow-Methods: *');  
@@ -89,18 +86,11 @@ else{
 					$index = array_search($location,$array);
 					$location_name = $array[$index+1];
 				}
-				
-				
-				
-		}
-			
-		
-		
-		
+		}	
 }
-				if(isset($_GET['format']) && strtoupper($_GET['format']) == "XML")
-				{	header('Content-type: text/plain');
-					$output = '<?xml version="1.0" encoding="UTF-8"?>
+		if(isset($_GET['format']) && strtoupper($_GET['format']) == "XML")
+		{	header('Content-type: text/plain');
+			$output = '<?xml version="1.0" encoding="UTF-8"?>
 <data>
 	<item>
 		<location> '.$location.' <location>
@@ -154,9 +144,6 @@ else{
 		"error_desc": "'.$error_desc.'"
 	}]
 }';
-									echo trim($output);
-
-				}
-
-
+					echo trim($output);
+		}
 ?>

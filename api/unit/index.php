@@ -1,4 +1,3 @@
-<?php include_once("analyticstracking.php") ?>
 <?php
 header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Headers: *');  
@@ -86,6 +85,4 @@ echo '
 		"value" : '.$val.',
 		"result" : '.$result.'
 }';
-
-
 ?>
