@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin: *');  
+header('Access-Control-Allow-Headers: *');  
+header('Access-Control-Allow-Methods: *');  
+
 $type=$_GET['type'];
 $from = $_GET['from'];
 $to = $_GET['to'];
