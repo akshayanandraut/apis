@@ -1,17 +1,12 @@
-<?php header('Content-type: text/html');?>
-<html>
-	<head>
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<?php header('Content-type: text/javascript');?>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106918659-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
-
   gtag('config', 'UA-106918659-1');
 </script>
-</head>
-<body>
+
 <?php 
 header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Headers: *');  
@@ -114,5 +109,3 @@ else
 					echo $output;
 }	
 ?>
-</body>
-</html>
