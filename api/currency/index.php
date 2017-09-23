@@ -1,4 +1,6 @@
 <?php header('Content-type: text/html');?>
+<html>
+	<head>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -9,6 +11,8 @@
   ga('send', 'pageview');
 
 </script>
+</head>
+<body>
 <?php 
 header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Headers: *');  
@@ -88,7 +92,7 @@ else
 if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "XML")
 {	
 	//header('Content-type: text/plain');
-	$output = '<?xml version="1.0" encoding="UTF-8"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response><error_no>'.$error_code.'</error_no><error>'.$error.'</error><error_desc>'.$error_desc.'</error_desc></item></data>';
+	$output = '&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;data&gt;&lt;item&gt;&lt;from&gt;'.$from.'&lt;/from&gt;&lt;from_currency&gt;'.$from_full_currency.'&lt;/from_currency&gt;&lt;to&gt;'.$to.'&lt;/to&gt;&lt;to_currency&gt;'.$to_full_currency.'&lt;/to_currency&gt;&lt;amount&gt;'.$amount.'&lt;/amount&gt;&lt;response&gt;'.$value.'&lt;/response&gt;&lt;error_no&gt;'.$error_code.'&lt;/error_no&gt;&lt;error&gt;'.$error.'&lt;/error&gt;&lt;error_desc&gt;'.$error_desc.'&lt;/error_desc&gt;&lt;/item&gt;&lt;/data&gt;';
 					echo $output;
 
 }
@@ -111,3 +115,6 @@ else
 					echo $output;
 }	
 ?>
+
+</body>
+</html>
