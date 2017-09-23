@@ -3,6 +3,8 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');  
 header('Access-Control-Allow-Methods: *');  
 
+echo "Under Maintainence";
+/*
 $error = "NO_ERROR";
 $error_code = "000";
 $error_desc = "NO ERROR.";
@@ -103,4 +105,5 @@ else
 									echo $output;
 
 				}		
+*/
 ?>
