@@ -65,7 +65,7 @@ else
 		}
 		else
 		{
-			header('Content-type: text/html');
+			//header('Content-type: text/html');
 			$resp = file_get_contents('https://www.google.com/finance/converter?a='.$amount.'&from='.$from.'&to='.$to.'');
 			
 			if(substr($resp,strripos($resp,'currency_converter_result')+27,17) == "Could not convert")
@@ -89,14 +89,14 @@ else
 }				
 if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "XML")
 {	
-	header('Content-type: text/plain');
+	//header('Content-type: text/plain');
 	$output = '<?xml version="1.0" encoding="UTF-8"?><data><item><from>'.$from.'</from><from_currency>'.$from_full_currency.'</from_currency><to>'.$to.'</to><to_currency>'.$to_full_currency.'</to_currency><amount>'.$amount.'</amount><response>'.$value.'</response><error_no>'.$error_code.'</error_no><error>'.$error.'</error><error_desc>'.$error_desc.'</error_desc></item></data>';
 					echo $output;
 
 }
 else if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "DIRECT")
 {	
-	header('Content-type: text/plain');
+	//header('Content-type: text/plain');
 	if($error_code != "000")
 	{
 		$output = 'ERROR '.$error_code.'. '.$error.'. '.$error_desc;
@@ -108,7 +108,7 @@ else if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "DIRECT")
 }
 else
 {
-	header('Content-type: text/json');
+	//header('Content-type: text/json');
 	$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'","error_no":"'.$error_code.'","error":"'.$error.'","error_desc":"'.$error_desc.'"}]}';
 					echo $output;
 }	
