@@ -1,4 +1,4 @@
-<?php //header('Content-type: text/html');?>
+<?php header('Content-type: text/html');?>
 <html>
 	<head>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -67,7 +67,7 @@ else
 		}
 		else
 		{
-			//header('Content-type: text/html');
+			header('Content-type: text/html');
 			$resp = file_get_contents('https://www.google.com/finance/converter?a='.$amount.'&from='.$from.'&to='.$to.'');
 			
 			if(substr($resp,strripos($resp,'currency_converter_result')+27,17) == "Could not convert")
@@ -91,14 +91,14 @@ else
 }				
 if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "XML")
 {	
-	//header('Content-type: text/plain');
+	header('Content-type: text/plain');
 	$output = '&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;data&gt;&lt;item&gt;&lt;from&gt;'.$from.'&lt;/from&gt;&lt;from_currency&gt;'.$from_full_currency.'&lt;/from_currency&gt;&lt;to&gt;'.$to.'&lt;/to&gt;&lt;to_currency&gt;'.$to_full_currency.'&lt;/to_currency&gt;&lt;amount&gt;'.$amount.'&lt;/amount&gt;&lt;response&gt;'.$value.'&lt;/response&gt;&lt;error_no&gt;'.$error_code.'&lt;/error_no&gt;&lt;error&gt;'.$error.'&lt;/error&gt;&lt;error_desc&gt;'.$error_desc.'&lt;/error_desc&gt;&lt;/item&gt;&lt;/data&gt;';
 					echo $output;
 
 }
 else if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "DIRECT")
 {	
-	//header('Content-type: text/plain');
+	header('Content-type: text/plain');
 	if($error_code != "000")
 	{
 		$output = 'ERROR '.$error_code.'. '.$error.'. '.$error_desc;
@@ -110,7 +110,7 @@ else if(isset($_GET['format']) && trim(strtoupper($_GET['format'])) == "DIRECT")
 }
 else
 {
-	//header('Content-type: text/json');
+	header('Content-type: text/json');
 	$output =  '{"data":[{"from":"'.$from.'","from_currency":"'.$from_full_currency.'","to":"'.$to.'","to_currency":"'.$to_full_currency.'","amount":"'.$amount.'","response":"'.$value.'","error_no":"'.$error_code.'","error":"'.$error.'","error_desc":"'.$error_desc.'"}]}';
 					echo $output;
 }	
