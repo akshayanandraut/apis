@@ -2,7 +2,6 @@
 header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Headers: *');  
 header('Access-Control-Allow-Methods: *');  
-
 echo "Under Maintainence";
 /*
 $error = "NO_ERROR";
